@@ -1,6 +1,10 @@
+require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+
+const geocode = require('../utils/geocode')
+const weatherSearch = require('../utils/weatherSearch')
 
 const app = express()
 
@@ -46,9 +50,20 @@ app.get('/weather', (req, res) => {
     })
   }
 
-  return res.send({
-    forecast: 'cloudy',
-    location: req.query.address
+  return geocode(req.query.address, (geoErr, { latitude, longitude, location } = {}) => {
+    if (geoErr) return res.send({ error: geoErr })
+
+    return weatherSearch(latitude, longitude, (weatherErr, { temperature, feelslike, conditions } = {}) => {
+      if (weatherErr) return res.send({ error: weatherErr })
+
+      return res.send({
+        address: req.query.address,
+        location,
+        temperature,
+        feelslike,
+        conditions
+      })
+    })
   })
 })
 
@@ -59,7 +74,7 @@ app.get('/products', (req, res) => {
     })
   }
 
-  console.log(req.query)
+  console.log(req.query) // eslint-disable-line
   return res.send({
     products: ['Luigi mansion']
   })
