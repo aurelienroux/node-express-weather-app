@@ -10,7 +10,7 @@ weatherForm.addEventListener('submit', (e) => {
   messageOne.textContent = 'Loading...'
   messageTwo.textContent = ''
 
-  fetch(`http://localhost:3000/weather?address=${address}`) //eslint-disable-line
+  fetch(`/weather?address=${address}`) //eslint-disable-line
     .then((response) => response.json())
     .then((data) => {
       if (data.error) {
