@@ -1,12 +1,15 @@
-# Node boilerplate
+# Search weather Express app
 
-Basic nodeJs boilerplate project with minimal settings
+Basic Express app to fetch geolocation and weather forecast
+
+## Dependencies and tools
 
 ```
 npm install
 ```
 
-## Dependencies and tools
-
+- Nodemon `npm run dev`
+- Node & Express
+- Handlebars
 - Prettier
 - Eslint (AirBnb rule)
