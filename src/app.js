@@ -24,7 +24,7 @@ app.use(express.static(publicDirPath))
 
 app.get('', (req, res) => {
   res.render('index', {
-    name: 'Aroux',
+    name: 'aroux',
     profile: 'https://github.com/aurelienroux',
     title: 'Weather'
   })
@@ -32,9 +32,9 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('about', {
-    name: 'Aroux',
+    name: 'aroux',
     profile: 'https://github.com/aurelienroux',
-    title: 'About me'
+    title: 'About'
   })
 })
 
@@ -42,7 +42,7 @@ app.get('/help', (req, res) => {
   res.render('help', {
     helpText:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    name: 'Aroux',
+    name: 'aroux',
     profile: 'https://github.com/aurelienroux',
     title: 'Help'
   })
@@ -80,16 +80,16 @@ app.get('/weather', (req, res) => {
 app.get('/help/*', (req, res) => {
   res.render('404', {
     errorMessage: 'Help article not found',
-    name: 'Aroux',
+    name: 'aroux',
     profile: 'https://github.com/aurelienroux',
-    title: '404'
+    title: 'Help 404'
   })
 })
 
 app.get('*', (req, res) => {
   res.render('404', {
     errorMessage: 'Page not found',
-    name: 'Aroux',
+    name: 'aroux',
     profile: 'https://github.com/aurelienroux',
     title: '404'
   })
