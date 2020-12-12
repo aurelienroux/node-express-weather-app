@@ -12,15 +12,20 @@
 <body>
   <div class="main-content">
     {{> header }}
-    <p>Use this site to get your weather!</p>
+    <p>Search weather for your location</p>
 
     <form>
       <input type="text" name="" placeholder="Location">
       <button type="submit">Search</button>
     </form>
 
-    <p id="message-1"></p>
-    <p id="message-2"></p>
+    <h2 id="message-1"></h2>
+    <div class="display">
+      <div id="icon">
+        <img src="">
+      </div>
+      <p id="message-2"></p>
+    </div>
   </div>
 
   {{> footer }}

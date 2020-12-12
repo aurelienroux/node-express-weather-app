@@ -31,14 +31,33 @@ h1 {
   margin-bottom: 16px;
 }
 
-header a {
+header a,
+footer a {
   color: #888888;
   margin-right: 16px;
   text-decoration: none;
 }
 
-.portrait {
-  width: 250px;
+header a:hover,
+footer a:hover {
+  border-bottom: 1px solid #888888;
+}
+
+.display {
+  display: flex;
+}
+
+.display p {
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.5;
+}
+
+img {
+  margin-right: 20px;
+  width: 70px;
 }
 
 input {

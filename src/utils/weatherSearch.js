@@ -12,7 +12,8 @@ const weatherSearch = (latitude, longitude, callback) => {
       callback(undefined, {
         temperature: body.current.temperature,
         feelslike: body.current.feelslike,
-        conditions: body.current.weather_descriptions[0]
+        conditions: body.current.weather_descriptions[0],
+        icon: body.current.weather_icons[0]
       })
     }
   })
