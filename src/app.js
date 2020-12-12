@@ -24,22 +24,26 @@ app.use(express.static(publicDirPath))
 
 app.get('', (req, res) => {
   res.render('index', {
-    name: 'Aure',
+    name: 'Aroux',
+    profile: 'https://github.com/aurelienroux',
     title: 'Weather'
   })
 })
 
 app.get('/about', (req, res) => {
   res.render('about', {
-    name: 'Aure',
+    name: 'Aroux',
+    profile: 'https://github.com/aurelienroux',
     title: 'About me'
   })
 })
 
 app.get('/help', (req, res) => {
   res.render('help', {
-    helpText: 'some help text',
-    name: 'Aure',
+    helpText:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    name: 'Aroux',
+    profile: 'https://github.com/aurelienroux',
     title: 'Help'
   })
 })
@@ -54,37 +58,30 @@ app.get('/weather', (req, res) => {
   return geocode(req.query.address, (geoErr, { latitude, longitude, location } = {}) => {
     if (geoErr) return res.send({ error: geoErr })
 
-    return weatherSearch(latitude, longitude, (weatherErr, { temperature, feelslike, conditions } = {}) => {
-      if (weatherErr) return res.send({ error: weatherErr })
+    return weatherSearch(
+      latitude,
+      longitude,
+      (weatherErr, { temperature, feelslike, conditions, icon } = {}) => {
+        if (weatherErr) return res.send({ error: weatherErr })
 
-      return res.send({
-        address: req.query.address,
-        location,
-        temperature,
-        feelslike,
-        conditions
-      })
-    })
-  })
-})
-
-app.get('/products', (req, res) => {
-  if (!req.query.search) {
-    return res.send({
-      error: 'must send search'
-    })
-  }
-
-  console.log(req.query) // eslint-disable-line
-  return res.send({
-    products: ['Luigi mansion']
+        return res.send({
+          address: req.query.address,
+          location,
+          temperature,
+          feelslike,
+          conditions,
+          icon
+        })
+      }
+    )
   })
 })
 
 app.get('/help/*', (req, res) => {
   res.render('404', {
     errorMessage: 'Help article not found',
-    name: 'Aure',
+    name: 'Aroux',
+    profile: 'https://github.com/aurelienroux',
     title: '404'
   })
 })
@@ -92,7 +89,8 @@ app.get('/help/*', (req, res) => {
 app.get('*', (req, res) => {
   res.render('404', {
     errorMessage: 'Page not found',
-    name: 'Aure',
+    name: 'Aroux',
+    profile: 'https://github.com/aurelienroux',
     title: '404'
   })
 })
